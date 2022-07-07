@@ -23,9 +23,13 @@ class ItemTest extends TestCase
         $this->assertEquals($descricao, $item->getDescricao());
 
     }
-    public function testGetsetValor()
+
+    /**
+     * @dataProvider dataValores
+     */
+    public function testGetsetValor($valor)
     {
-        $valor = 35.42;
+        //$valor = 35.42;
 
         $item = new Item();
         $item->setValor($valor);
@@ -54,5 +58,13 @@ class ItemTest extends TestCase
         $this->assertEquals(false, $item->itemValido());
     }
 
+    public function dataValores()
+    {
+        return [
+            [100],
+            [-2],
+            [0]
+        ];
+    }
 
 }
